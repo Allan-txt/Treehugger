@@ -5,4 +5,6 @@
 - [ ] getmutter()
 - [ ] getallgeschwister()
 - [ ] getgeschwister()
+
+
 ![test](/TreeHugging.png)
