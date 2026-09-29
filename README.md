@@ -1,4 +1,5 @@
 # Treehugger
 
 
-Some stuff here
+
+![test](/TreeHugging.png)
