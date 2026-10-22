@@ -8,7 +8,6 @@ def getelternteile(uuid):
     cur.execute("SELECT mutter FROM trees WHERE uuid=?",(uuid,))
     mutter = cur.fetchall()
     return(vater,mutter)
-
 def getvater(uuid):
     conn = sqlite3.connect("treelist.sqlite")
     cur = conn.cursor()
@@ -36,12 +35,8 @@ def getallgeschwister(uuid):
     print(result)
     #output muss noch cleaner sein!!!
 
-
-
-
-
-
 def getgeschwister(uuid,geschlecht,jungalt,index):
     pass
 
-getallgeschwister(3)
+
+
