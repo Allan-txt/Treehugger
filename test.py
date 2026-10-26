@@ -12,23 +12,25 @@ some bird ideas. Maybe that's the best you can do.
 """
 from bullet import Bullet
 import sqlite3
-choice = ["first", "second", "third", "fourth", "fitht"]
 
 
 def main(choice):
+    print("\033[H\033[J", end='')
     choicelist = getchoices(choice)
     amount = len(choicelist)
     cli = Bullet(choices = choicelist)
     result = cli.launch()
+
     main(result)
 
 def getchoices(choice):
     choicelist = []
     choicelist.append(str(getvater(choice)))
     choicelist.append(str(getmutter(choice)))
-    choicelist.append(str(getgeschwister(choice)))
-    choicelist.append(str(getpartner(choice)))
-    choicelist.append(str(getkinder(choice)))
+    for i in getgeschwister(choice):
+        choicelist.append(str(i))
+    for i in getkinder(choice):
+        choicelist.append(str(i))
     return choicelist
 
 def getvater(id):
@@ -48,10 +50,28 @@ def getmutter(id):
     mutter = mutter[0]
     return mutter
 def getgeschwister(id):
-    return None
-def getpartner(id):
-    return None
-def getkinder(id):
-    return None
+    vater = getvater(id)
+    mutter = getmutter(id)
+    conn = sqlite3.connect("treelist.sqlite")
+    cur = conn.cursor()
+    cur.execute("SELECT uuid FROM trees WHERE vater=? OR mutter=?", (vater, mutter,))
+    ge = cur.fetchall()
+    geschwister = []
+    for i in ge:
+        i = i[0]
+        geschwister.append(i)
+    return geschwister
 
-main(20)
+def getkinder(id):
+    conn = sqlite3.connect("treelist.sqlite")
+    cur = conn.cursor()
+    cur.execute("SELECT uuid FROM trees WHERE vater=? OR mutter=?",(id,id,))
+    ki = cur.fetchall()
+    kinder =[]
+    for i in ki:
+        i = i[0]
+        kinder.append(i)
+    return kinder
+
+main(4)
+#getgeschwister(4)
