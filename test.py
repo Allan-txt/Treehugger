@@ -54,4 +54,4 @@ def getpartner(id):
 def getkinder(id):
     return None
 
-main(3)
+main(20)
