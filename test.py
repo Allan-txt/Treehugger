@@ -12,7 +12,6 @@ some bird ideas. Maybe that's the best you can do.
 """
 from bullet import Bullet
 import sqlite3
-#TODO bei getgeschiwster(id) wird id auch returned!!!
 
 def main(choice):
     print("Stammbaum von: ", choice)
