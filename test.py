@@ -12,25 +12,28 @@ some bird ideas. Maybe that's the best you can do.
 """
 from bullet import Bullet
 import sqlite3
-
+#TODO bei getgeschiwster(id) wird id auch returned!!!
 
 def main(choice):
-    print("\033[H\033[J", end='')
+    print("-----")
+    #print("\033[H\033[J", end='')
     choicelist = getchoices(choice)
-    amount = len(choicelist)
     cli = Bullet(choices = choicelist)
     result = cli.launch()
+    result = result.split(" ")
+    result = result[1]
+    print(result)
 
     main(result)
 
 def getchoices(choice):
     choicelist = []
-    choicelist.append(str(getvater(choice)))
-    choicelist.append(str(getmutter(choice)))
+    choicelist.append("vater: " + str(getvater(choice)))
+    choicelist.append("mutter: "+str(getmutter(choice)))
     for i in getgeschwister(choice):
-        choicelist.append(str(i))
+        choicelist.append("geschwister: " + str(i))
     for i in getkinder(choice):
-        choicelist.append(str(i))
+        choicelist.append("kinder: " + str(i))
     return choicelist
 
 def getvater(id):
