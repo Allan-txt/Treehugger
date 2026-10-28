@@ -15,13 +15,13 @@ import sqlite3
 #TODO bei getgeschiwster(id) wird id auch returned!!!
 
 def main(choice):
-    print("-----")
+    print("Stammbaum von: ", choice)
     #print("\033[H\033[J", end='')
     choicelist = getchoices(choice)
     cli = Bullet(choices = choicelist)
     result = cli.launch()
     result = result.split(" ")
-    result = result[1]
+    result = int(result[1])
     print(result)
 
     main(result)
@@ -63,6 +63,7 @@ def getgeschwister(id):
     for i in ge:
         i = i[0]
         geschwister.append(i)
+    geschwister.remove(id)
     return geschwister
 
 def getkinder(id):
