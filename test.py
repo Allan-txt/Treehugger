@@ -10,12 +10,13 @@ where I've been living. You're that bird looking at the monitor, and
 you're thinking to yourself, "I can figure this out." Maybe you have 
 some bird ideas. Maybe that's the best you can do.
 """
+#ToDO select *
+#ToDO Palmen hinzufügen
 from bullet import Bullet
 import sqlite3
 
 def main(choice):
     print("Stammbaum von: ", choice)
-    #print("\033[H\033[J", end='')
     choicelist = getchoices(choice)
     cli = Bullet(choices = choicelist)
     result = cli.launch()
@@ -51,6 +52,9 @@ def getmutter(id):
     mutter = mu[0]
     mutter = mutter[0]
     return mutter
+
+# def opa
+# getvater(getvater(id), getmutter(id))
 def getgeschwister(id):
     vater = getvater(id)
     mutter = getmutter(id)
